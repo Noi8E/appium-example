@@ -1,7 +1,6 @@
 package helpers;
 
 import config.BrowserstackConfig;
-import config.DevicesConfig;
 import org.aeonbits.owner.ConfigFactory;
 
 import static io.restassured.RestAssured.config;
@@ -14,7 +13,6 @@ public class ConfigSettings {
     public static void setConfig() {
         String user = browserstackConfig.getUser();
         String key = browserstackConfig.getKey();
-        String device = devicesConfig.getBrowserstack();
     }
 
 

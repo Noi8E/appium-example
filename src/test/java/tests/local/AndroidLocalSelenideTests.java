@@ -59,8 +59,4 @@ public class AndroidLocalSelenideTests extends LocalTestBase {
             $x("//*[@text='RU']").shouldNot(visible);
         });
     }
-
-//                $$(MobileBy.id("org.wikipedia.alpha:id/page_list_item_container"))
-//                        .shouldHave(sizeGreaterThan(0))
-
 }
