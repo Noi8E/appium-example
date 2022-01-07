@@ -1,8 +1,9 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import helpers.ConfigSettings;
+import config.SelenoidConfig;
 import io.appium.java_client.android.AndroidDriver;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.File;
@@ -10,7 +11,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class SelenoidMobileDriver extends ConfigSettings implements WebDriverProvider {
+public class SelenoidMobileDriver implements WebDriverProvider {
+
+    public static SelenoidConfig selenoidConfig = ConfigFactory.create(SelenoidConfig.class);
 
 
     public static URL getAppiumUrl() {

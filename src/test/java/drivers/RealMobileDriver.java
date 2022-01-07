@@ -1,8 +1,9 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import helpers.ConfigSettings;
+import config.RealDeviceConfig;
 import io.appium.java_client.android.AndroidDriver;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -12,7 +13,9 @@ import java.net.URL;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RealMobileDriver extends ConfigSettings implements WebDriverProvider {
+public class RealMobileDriver implements WebDriverProvider {
+
+    public static RealDeviceConfig realDeviceConfig = ConfigFactory.create(RealDeviceConfig.class);
 
 
     public static URL getAppiumUrl() {

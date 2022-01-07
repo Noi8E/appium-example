@@ -1,8 +1,9 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import helpers.ConfigSettings;
+import config.EmulatorConfig;
 import io.appium.java_client.android.AndroidDriver;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -12,7 +13,9 @@ import java.net.URL;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-public class EmulatorMobileDriver extends ConfigSettings implements WebDriverProvider {
+public class EmulatorMobileDriver implements WebDriverProvider {
+    public static EmulatorConfig emulatorConfig = ConfigFactory.create(EmulatorConfig.class);
+
 
     public static URL getAppiumUrl() {
         try {
