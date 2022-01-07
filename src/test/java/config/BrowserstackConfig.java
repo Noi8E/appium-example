@@ -9,21 +9,21 @@ import org.aeonbits.owner.Config;
 public interface BrowserstackConfig extends Config {
 
     @Key("user")
-    String getUser();
+    String user();
 
     @Key("key")
-    String getKey();
+    String key();
 
     @Key("device")
-    String getDevice();
+    String device();
 
     @Key("osVersion")
-    String getOsVersion();
+    String osVersion();
 
     @Key("app")
-    String getApp();
+    String app();
 
     @Key("hostName")
-    String getHostName();
+    String hostName();
 
 }

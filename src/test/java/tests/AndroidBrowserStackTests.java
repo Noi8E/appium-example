@@ -1,5 +1,4 @@
-package tests.local;
-
+package tests;
 
 import io.appium.java_client.MobileBy;
 import org.junit.jupiter.api.DisplayName;
@@ -10,8 +9,8 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-@Tag("Selenide Android")
-public class AndroidLocalSelenideTests extends LocalTestBase {
+@Tag("browserstack_android")
+public class AndroidBrowserStackTests extends TestBase {
     @Test
     @DisplayName("Successful search in wikipedia android app")
     void searchTest() {
