@@ -1,9 +1,7 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import config.RealDeviceConfig;
 import io.appium.java_client.android.AndroidDriver;
-import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -15,12 +13,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RealMobileDriver implements WebDriverProvider {
 
-    public static RealDeviceConfig realDeviceConfig = ConfigFactory.create(RealDeviceConfig.class);
 
-
-    public static URL getAppiumUrl() {
+    public static URL getAppiumServerUrl() {
         try {
-            return new URL(realDeviceConfig.url());
+            return new URL("http://127.0.0.1:4723/wd/hub");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -31,16 +27,16 @@ public class RealMobileDriver implements WebDriverProvider {
 
 
         // Specify device and os_version for testing
-        desiredCapabilities.setCapability("platformName",realDeviceConfig.platformName());
-        desiredCapabilities.setCapability("deviceName", realDeviceConfig.deviceName());
-        desiredCapabilities.setCapability("version", realDeviceConfig.osVersion());
-        desiredCapabilities.setCapability("locale", realDeviceConfig.locale());
-        desiredCapabilities.setCapability("language", realDeviceConfig.language());
-        desiredCapabilities.setCapability("appPackage", realDeviceConfig.appPackage());
-        desiredCapabilities.setCapability("appActivity", realDeviceConfig.appActivity());
+        desiredCapabilities.setCapability("platformName","Android");
+        desiredCapabilities.setCapability("deviceName", "device-5554");
+        desiredCapabilities.setCapability("version", "11.0");
+        desiredCapabilities.setCapability("locale", "en");
+        desiredCapabilities.setCapability("language", "en");
+        desiredCapabilities.setCapability("appPackage", "org.wikipedia.alpha" );
+        desiredCapabilities.setCapability("appActivity", "org.wikipedia.alpha.MainActivity");
         desiredCapabilities.setCapability("app",getAbsolutePath("src/test/resources/app-alpha-universal-release.apk"));
 
-        return new AndroidDriver(getAppiumUrl(), desiredCapabilities);
+        return new AndroidDriver(getAppiumServerUrl(), desiredCapabilities);
     }
     private String getAbsolutePath(String filePath) {
         File file = new File(filePath);

@@ -1,7 +1,6 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import config.BrowserstackConfig;
 import io.appium.java_client.android.AndroidDriver;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +15,7 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
 
     public static URL getBrowserstackUrl() {
         try {
-            return new URL(browserstackConfig.hostName());
+            return new URL("http://hub.browserstack.com/wd/hub");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -33,8 +32,8 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
         desiredCapabilities.setCapability("app", browserstackConfig.app());
 
         // Specify device and os_version for testing
-        desiredCapabilities.setCapability("device", browserstackConfig.device());
-        desiredCapabilities.setCapability("os_version", browserstackConfig.osVersion());
+        desiredCapabilities.setCapability("device", "Google Pixel 3");
+        desiredCapabilities.setCapability("os_version", "9.0");
 
         // Set other BrowserStack capabilities
         desiredCapabilities.setCapability("project", "First Java Project");

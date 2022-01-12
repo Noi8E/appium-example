@@ -43,7 +43,6 @@ tasks.withType(JavaCompile) {
 
 
 tasks.withType(Test) {
-    System.setProperty("host","emulator")
     systemProperties(System.getProperties())
     useJUnitPlatform()
     testLogging {
@@ -59,14 +58,17 @@ task selenoid_android(type: Test) {
     useJUnitPlatform {
         includeTags 'selenoid_android'
     }
+    systemProperty "host", "selenoid"
 }
 task emulate_android(type: Test) {
     useJUnitPlatform {
         includeTags'emulate_android'
     }
+    systemProperty "host", "emulator"
 }
 task browserstack_android(type: Test) {
     useJUnitPlatform {
         includeTags'browserstack_android'
     }
+    systemProperty "host", "browserstack"
 }

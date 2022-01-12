@@ -1,7 +1,5 @@
 package helpers;
 
-import config.BrowserstackConfig;
-import drivers.BrowserstackMobileDriver;
 import org.aeonbits.owner.ConfigFactory;
 
 import static io.restassured.RestAssured.given;
