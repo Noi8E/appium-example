@@ -1,11 +1,13 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import config.SecretsConfig;
 import drivers.BrowserstackMobileDriver;
 import drivers.EmulatorMobileDriver;
 import drivers.SelenoidMobileDriver;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,6 +17,10 @@ import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 import static helpers.Attach.getSessionId;
 
 public class TestBase {
+
+    public static SecretsConfig secretsConfig = ConfigFactory.create(SecretsConfig.class);
+
+
     @BeforeAll
     public static void setUp() {
         addListener("AllureSelenide", new AllureSelenide());
@@ -41,10 +47,10 @@ public class TestBase {
 
     @AfterEach
     public void afterEach() {
-        String sessionId = getSessionId();
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
-        Attach.attachVideo(sessionId);
+//        String sessionId = getSessionId();
+//        Attach.screenshotAs("Last screenshot");
+//        Attach.pageSource();
+//        Attach.attachVideo(sessionId);
         closeWebDriver();
     }
 
