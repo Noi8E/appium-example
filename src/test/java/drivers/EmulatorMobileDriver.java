@@ -25,13 +25,13 @@ public class EmulatorMobileDriver implements WebDriverProvider {
     @Override
     public WebDriver createDriver(DesiredCapabilities desiredCapabilities) {
         desiredCapabilities.setCapability("platformName", "Android");
-        desiredCapabilities.setCapability("deviceName", "Pixel_4_API_30");
+        desiredCapabilities.setCapability("deviceName", "emulator-5554");
         desiredCapabilities.setCapability("version", "11.0");
         desiredCapabilities.setCapability("locale", "en");
         desiredCapabilities.setCapability("language", "en");
         desiredCapabilities.setCapability("appPackage", "org.wikipedia.alpha");
-        desiredCapabilities.setCapability("appActivity", "org.wikipedia.alpha.MainActivity");
-        desiredCapabilities.setCapability("app", getAbsolutePath("src/test/resources/app-alpha-universal-release.apk"));
+        desiredCapabilities.setCapability("appActivity", "org.wikipedia.main.MainActivity");
+        desiredCapabilities.setCapability("app", getAbsolutePath("src/test/resources/app/app-alpha-universal-release.apk"));
 
 
         return new AndroidDriver(getAppiumServerUrl(), desiredCapabilities);

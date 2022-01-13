@@ -63,12 +63,12 @@ task selenoid_android(type: Test) {
 task emulate_android(type: Test) {
     systemProperty "host", "emulator"
     useJUnitPlatform {
-        includeTags'emulate_android'
+        includeTags 'emulate_android'
     }
 }
 task browserstack_android(type: Test) {
     systemProperty "host", "browserstack"
     useJUnitPlatform {
-        includeTags'browserstack_android'
+        includeTags 'browserstack_android'
     }
 }

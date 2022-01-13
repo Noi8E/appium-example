@@ -29,8 +29,8 @@ public class SelenoidMobileDriver implements WebDriverProvider {
         desiredCapabilities.setCapability("locale", "en");
         desiredCapabilities.setCapability("language", "en");
         desiredCapabilities.setCapability("appPackage", "org.wikipedia.alpha");
-        desiredCapabilities.setCapability("appActivity", "org.wikipedia.alpha.MainActivity");
-        desiredCapabilities.setCapability("app", getAbsolutePath("src/test/resources/app-alpha-universal-release.apk"));
+        desiredCapabilities.setCapability("appActivity", "org.wikipedia.main.MainActivity");
+        desiredCapabilities.setCapability("app", getAbsolutePath("src/test/resources/app/app-alpha-universal-release.apk"));
 
         return new AndroidDriver(getAppiumUrl(), desiredCapabilities);
     }
