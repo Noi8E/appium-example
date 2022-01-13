@@ -55,20 +55,20 @@ tasks.withType(Test) {
 }
 
 task selenoid_android(type: Test) {
+    systemProperty "host", "selenoid"
     useJUnitPlatform {
         includeTags 'selenoid_android'
     }
-    systemProperty "host", "selenoid"
 }
 task emulate_android(type: Test) {
+    systemProperty "host", "emulator"
     useJUnitPlatform {
         includeTags'emulate_android'
     }
-    systemProperty "host", "emulator"
 }
 task browserstack_android(type: Test) {
+    systemProperty "host", "browserstack"
     useJUnitPlatform {
         includeTags'browserstack_android'
     }
-    systemProperty "host", "browserstack"
 }

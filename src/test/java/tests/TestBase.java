@@ -11,6 +11,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
@@ -26,7 +27,9 @@ public class TestBase {
         addListener("AllureSelenide", new AllureSelenide());
 
         String host = System.getProperty("host");
-        if (host.equals("emulator")) {
+        if (host == null) {
+            throw new RuntimeException("Platform type not selected");
+        } else if (host.equals("emulator")) {
             Configuration.browser = EmulatorMobileDriver.class.getName();
         } else if (host.equals("browserstack")) {
             Configuration.browser = BrowserstackMobileDriver.class.getName();
