@@ -1,15 +1,14 @@
 package helpers;
 
-import config.BrowserstackConfig;
-import drivers.BrowserstackMobileDriver;
-import org.aeonbits.owner.ConfigFactory;
+import tests.TestBase;
 
 import static io.restassured.RestAssured.given;
 
-public class Browserstack {
+public class Browserstack extends TestBase {
+
     public static String videoUrl(String sessionId) {
         return given()
-                .auth().basic(ConfigFactory.create(BrowserstackConfig.class).user(), ConfigFactory.create(BrowserstackConfig.class).key())
+                .auth().basic(secretsConfig.browserstackUser(), secretsConfig.browserstackKey())
                 .when()
                 .get("https://api-cloud.browserstack.com/app-automate/sessions/" + sessionId +".json")
                 .then()

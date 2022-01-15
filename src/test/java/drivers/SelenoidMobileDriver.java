@@ -1,24 +1,21 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import config.SelenoidConfig;
 import io.appium.java_client.android.AndroidDriver;
-import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import tests.TestBase;
+
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class SelenoidMobileDriver implements WebDriverProvider {
-
-    public static SelenoidConfig selenoidConfig = ConfigFactory.create(SelenoidConfig.class);
-
+public class SelenoidMobileDriver extends TestBase implements WebDriverProvider {
 
     public static URL getAppiumUrl() {
         try {
-            return new URL(selenoidConfig.url());
+            return new URL(String.format("https://%s:%s@selenoid.autotests.cloud/wd/hub",secretsConfig.selenoidUser(),secretsConfig.selenoidPassword()));
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -27,14 +24,14 @@ public class SelenoidMobileDriver implements WebDriverProvider {
     @Override
     public WebDriver createDriver(DesiredCapabilities desiredCapabilities) {
 
-        desiredCapabilities.setCapability("platformName", selenoidConfig.platformName());
-        desiredCapabilities.setCapability("deviceName", selenoidConfig.deviceName());
-        desiredCapabilities.setCapability("version", selenoidConfig.version());
-        desiredCapabilities.setCapability("locale", selenoidConfig.locale());
-        desiredCapabilities.setCapability("language", selenoidConfig.language());
-        desiredCapabilities.setCapability("appPackage", selenoidConfig.appPackage());
-        desiredCapabilities.setCapability("appActivity", selenoidConfig.appActivity());
-        desiredCapabilities.setCapability("app", getAbsolutePath("src/test/resources/app-alpha-universal-release.apk"));
+        desiredCapabilities.setCapability("platformName", "Android");
+        desiredCapabilities.setCapability("deviceName", "Pixel_4_API_30");
+        desiredCapabilities.setCapability("version", "11.0");
+        desiredCapabilities.setCapability("locale", "en");
+        desiredCapabilities.setCapability("language", "en");
+        desiredCapabilities.setCapability("appPackage", "org.wikipedia.alpha");
+        desiredCapabilities.setCapability("appActivity", "org.wikipedia.main.MainActivity");
+        desiredCapabilities.setCapability("app", getAbsolutePath("src/test/resources/app/app-alpha-universal-release.apk"));
 
         return new AndroidDriver(getAppiumUrl(), desiredCapabilities);
     }
