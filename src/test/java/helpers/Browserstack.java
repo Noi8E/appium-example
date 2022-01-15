@@ -8,7 +8,7 @@ public class Browserstack extends TestBase {
 
     public static String videoUrl(String sessionId) {
         return given()
-                .auth().basic(secretsConfig.browserstack_user(), secretsConfig.browserstack_key())
+                .auth().basic(secretsConfig.browserstackUser(), secretsConfig.browserstackKey())
                 .when()
                 .get("https://api-cloud.browserstack.com/app-automate/sessions/" + sessionId +".json")
                 .then()

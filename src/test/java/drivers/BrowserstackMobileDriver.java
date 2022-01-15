@@ -2,7 +2,6 @@ package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
 import io.appium.java_client.android.AndroidDriver;
-import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import tests.TestBase;
@@ -25,20 +24,20 @@ public class BrowserstackMobileDriver extends TestBase implements WebDriverProvi
     public WebDriver createDriver(DesiredCapabilities desiredCapabilities) {
 
         // Set your access credentials
-        desiredCapabilities.setCapability("browserstack.user", secretsConfig.browserstack_user());
-        desiredCapabilities.setCapability("browserstack.key", secretsConfig.browserstack_key());
+        desiredCapabilities.setCapability("browserstack.user", secretsConfig.browserstackUser());
+        desiredCapabilities.setCapability("browserstack.key", secretsConfig.browserstackKey());
 
         // Set URL of the application under test
-        desiredCapabilities.setCapability("app", secretsConfig.browserstack_app());
+        desiredCapabilities.setCapability("app", secretsConfig.browserstackApp());
 
         // Specify device and os_version for testing
-        desiredCapabilities.setCapability("device", "Google Pixel 3");
-        desiredCapabilities.setCapability("os_version", "9.0");
+        desiredCapabilities.setCapability("device", "Google Pixel 4");
+        desiredCapabilities.setCapability("os_version", "11.0");
 
         // Set other BrowserStack capabilities
-        desiredCapabilities.setCapability("project", "First Java Project");
+        desiredCapabilities.setCapability("project", "QA GURU SAMPLE");
         desiredCapabilities.setCapability("build", "Java Android");
-        desiredCapabilities.setCapability("name", "first_test");
+        desiredCapabilities.setCapability("name", "qa-guru-sample-tests");
 
         return new AndroidDriver(getBrowserstackUrl(), desiredCapabilities);
     }

@@ -53,7 +53,9 @@ public class TestBase {
 //        String sessionId = getSessionId();
 //        Attach.screenshotAs("Last screenshot");
 //        Attach.pageSource();
-//        Attach.attachVideo(sessionId);
+//        if (System.getProperty("host").equals("browserstack")) {
+//            Attach.attachVideo(sessionId);
+//        }
         closeWebDriver();
     }
 

@@ -10,18 +10,18 @@ import org.aeonbits.owner.Config;
 public interface SecretsConfig extends Config {
 
     @Key("selenoid_user")
-    String selenoid_user();
+    String selenoidUser();
 
     @Key ("selenoid_password")
-    String selenoid_password();
+    String selenoidPassword();
 
     @Key("browserstack_user")
-    String browserstack_user();
+    String browserstackUser();
 
     @Key("browserstack_key")
-    String browserstack_key();
+    String browserstackKey();
 
     @Key("browserstack_app")
-    String browserstack_app();
+    String browserstackApp();
 
 }

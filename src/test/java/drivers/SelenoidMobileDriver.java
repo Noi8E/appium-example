@@ -2,19 +2,20 @@ package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
 import io.appium.java_client.android.AndroidDriver;
-import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import tests.TestBase;
+
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class SelenoidMobileDriver implements WebDriverProvider {
+public class SelenoidMobileDriver extends TestBase implements WebDriverProvider {
 
     public static URL getAppiumUrl() {
         try {
-            return new URL("http://127.0.0.1:4723/wd/hub");
+            return new URL(String.format("https://%s:%s@selenoid.autotests.cloud/wd/hub",secretsConfig.selenoidUser(),secretsConfig.selenoidPassword()));
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
