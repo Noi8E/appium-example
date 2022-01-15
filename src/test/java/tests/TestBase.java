@@ -50,12 +50,12 @@ public class TestBase {
 
     @AfterEach
     public void afterEach() {
-//        String sessionId = getSessionId();
-//        Attach.screenshotAs("Last screenshot");
-//        Attach.pageSource();
-//        if (System.getProperty("host").equals("browserstack")) {
-//            Attach.attachVideo(sessionId);
-//        }
+        String sessionId = getSessionId();
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        if (System.getProperty("host").equals("browserstack")) {
+            Attach.attachVideo(sessionId);
+        }
         closeWebDriver();
     }
 
