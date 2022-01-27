@@ -4,12 +4,12 @@ import com.codeborne.selenide.WebDriverProvider;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import tests.TestBase;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class BrowserstackMobileDriver extends TestBase implements WebDriverProvider {
+import static tests.TestBase.secretsConfig;
+
+public class BrowserstackMobileDriver implements WebDriverProvider {
 
 
     public static URL getBrowserstackUrl() {
