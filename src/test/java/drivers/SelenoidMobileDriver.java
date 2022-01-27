@@ -2,20 +2,21 @@ package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
 import io.appium.java_client.android.AndroidDriver;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import tests.TestBase;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class SelenoidMobileDriver extends TestBase implements WebDriverProvider {
+public class SelenoidMobileDriver implements WebDriverProvider {
 
     public static URL getAppiumUrl() {
         try {
-            return new URL(String.format("https://%s:%s@selenoid.autotests.cloud/wd/hub",secretsConfig.selenoidUser(),secretsConfig.selenoidPassword()));
+            return new URL("http://127.0.0.1:4723/wd/hub");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -23,7 +24,6 @@ public class SelenoidMobileDriver extends TestBase implements WebDriverProvider 
 
     @Override
     public WebDriver createDriver(DesiredCapabilities desiredCapabilities) {
-
         desiredCapabilities.setCapability("platformName", "Android");
         desiredCapabilities.setCapability("deviceName", "Pixel_4_API_30");
         desiredCapabilities.setCapability("version", "11.0");
@@ -35,7 +35,6 @@ public class SelenoidMobileDriver extends TestBase implements WebDriverProvider 
 
         return new AndroidDriver(getAppiumUrl(), desiredCapabilities);
     }
-
 
     private String getAbsolutePath(String filePath) {
         File file = new File(filePath);
