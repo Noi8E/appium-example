@@ -21,26 +21,21 @@ public class TestBase {
 
     public static SecretsConfig secretsConfig = ConfigFactory.create(SecretsConfig.class);
 
-
     @BeforeAll
     public static void setUp() {
         addListener("AllureSelenide", new AllureSelenide());
-
         String host = System.getProperty("host");
-        if (host == null) {
-            throw new RuntimeException("Platform type not selected");
-        } else if (host.equals("emulator")) {
-            Configuration.browser = EmulatorMobileDriver.class.getName();
-        } else if (host.equals("browserstack")) {
-            Configuration.browser = BrowserstackMobileDriver.class.getName();
-        } else if (host.equals("selenoid")) {
-            Configuration.browser = SelenoidMobileDriver.class.getName();
+        switch (host) {
+            case "emulator": Configuration.browser = EmulatorMobileDriver.class.getName();
+            break;
+            case "browserstack": Configuration.browser = BrowserstackMobileDriver.class.getName();
+            break;
+            case "selenoid": Configuration.browser = SelenoidMobileDriver.class.getName();
+            break;
         }
-
         Configuration.startMaximized = true;
         Configuration.browserSize = null;
         Configuration.timeout = 100000;
-
     }
 
     @BeforeEach
@@ -58,5 +53,4 @@ public class TestBase {
         }
         closeWebDriver();
     }
-
 }

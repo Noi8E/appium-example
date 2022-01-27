@@ -54,14 +54,14 @@ tasks.withType(Test) {
     }
 }
 
-task selenoid_android(type: Test) {
+task selenoid(type: Test) {
     systemProperty "host", "selenoid"
 }
 
-task emulate_android(type: Test) {
+task emulate(type: Test) {
     systemProperty "host", "emulator"
 }
 
-task browserstack_android(type: Test) {
+task browserstack(type: Test) {
     systemProperty "host", "browserstack"
 }

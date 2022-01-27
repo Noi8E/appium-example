@@ -14,7 +14,8 @@ import static tests.TestBase.secretsConfig;
 public class SelenoidMobileDriver implements WebDriverProvider {
     public static URL getAppiumUrl() {
         try {
-            return new URL(String.format("https://%s:%s@selenoid.autotests.cloud/wd/hub",secretsConfig.selenoidUser(),secretsConfig.selenoidPassword()));
+            return new URL(String.format("https://%s:%s@selenoid.autotests.cloud/wd/hub",
+                    secretsConfig.selenoidUser(),secretsConfig.selenoidPassword()));
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
