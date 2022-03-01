@@ -5,6 +5,7 @@ import tests.TestBase;
 import static io.restassured.RestAssured.given;
 
 public class Browserstack extends TestBase {
+    //test
 
     public static String videoUrl(String sessionId) {
         return given()
